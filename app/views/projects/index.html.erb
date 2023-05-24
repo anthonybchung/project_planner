@@ -1,13 +1,14 @@
 <h1>Projects</h1>
 
 <% #form: search query %>
+<main data-controller = "project-list">
 	<%= form_with url: projects_path,
 	              method: :get,
 	              data: {
 		              turbo_frame: "project_list",
-		              controller: "project-list"
+		              # controller: "project-list"
 	              } do |form| %>
-		<%= form.text_field :query, placeholder: "Search Project Name", data: {action: "input->project-list#search"} %>
+		<%= form.text_field :query, placeholder: "Search Project Name", data: {action: "input->project-list#search",project_list_target:"searchName"} %>
 		<%= form.submit "Search" %>
 	<% end %>
 <% #table: list all like projects %>
@@ -16,6 +17,8 @@
 		<%= render @projects %>
 	</ul>
 <% end %>
+
+</main>
 
 
 
